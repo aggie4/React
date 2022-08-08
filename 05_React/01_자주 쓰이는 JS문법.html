@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>React에서 자주 쓰이는 Javascript 문법</title>
+    </head>
+    <body>
+        <h1>React에서 자주 쓰이는 Javascript 문법</h1>
+        <textarea cols="150" rows="10">
+
+            1. Object Shorthand Assignment
+                let name = "SungJin"
+                let age = 20
+                let person = {
+                    name : name,
+                    age : age
+                }
+
+                위의 코드를 줄여서 쓰면 아래와 같다.
+                let name = "SungJin"
+                let age = 20
+                let person = {name, age}
+
+            2. Destructuring
+                let person = {
+                    name : "SungJin"
+                    age : 20
+                }
+                위의 코드에서 객체 안의 내용을 변수화 시키는 방법(분해)
+                let name = person.name
+                let age = person.age
+                또는,
+                let name = person['name']
+                let age = person[age]
+                의 방식으로 사용 가능하다. 하지만,
+                let {name, age} = person
+                의 코드로도 사용이 가능하다.
+
+                위의 문법은 배열에서도 사용이 가능한데 다음과 같다.
+                let array = [1,2,3,4]
+                let [a, b] = array // a, b 임의의 이름을 저장한 후 가지고 오기
+                let [a, b, ...rest] = array // a, b 값 말고 나머지 가지고 오기
+
+            3. Spread
+
+                let person = {
+                    name : "SungJin"
+                    age : 20
+                }
+                let person2 = {...person}
+        </textarea>
+        <script>
+            // 많이 사용되어지는 첫번째
+            // 1. Shorthand
+
+            /* let name = 'SungJin';
+            let age = 20; */
+            /* let person = {
+                name: name,
+                age: age,
+            }; */
+
+            // 키와 키값이 똑같을 때 사용가능 (줄여쓰기, Shorthand)
+            /* let person = {
+                name,
+                age,
+            };
+            console.log(person); */
+
+            // 2. Destructuring
+            /* let person = {
+                name: 'SungJin',
+                age: 20,
+            }; */
+
+            //let name = person.name;
+            //let age = person.age;
+            //let name = person['name']
+            //let age = person['age']
+            //let { name, age } = person; // 객체 안에 있는 값을 가지고 오기
+            //let { age } = person;
+            //console.log(age);
+            //let array = [1, 2, 3, 4];
+            //let [a, b] = array; // a, b 라는 임의의 이름을 저장한 후 가지고 오기
+            //console.log(a, b);
+            //let [a] = array;  // 한 가지 값도 가능하다.
+            //console.log(a);
+            //let [a, b, ...rest] = array;  // a, b 값 말고 나머기 값 가지고 오기
+            //console.log(rest);
+
+            let person = {
+                name: 'SungJin',
+                age: 20,
+            };
+            let person2 = { ...person };
+            console.log(person, person2);
+            let person3 = person; // 기존에 있는 주소값만 가지고 온다. 그걸 창조하는 변수가 생기는 것. 창조할 수 있는 주소값만 복사
+            // 새로운 걸 만들어 낸 것
+            console.log(person3);
+            console.log('스프레드를 사용한 복사', person == person2);
+            console.log('대입연사자를 사용한 주소값 복사', person == person3);
+        </script>
+    </body>
+</html>
