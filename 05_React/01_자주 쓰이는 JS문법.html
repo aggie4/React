@@ -49,7 +49,50 @@
                     name : "SungJin"
                     age : 20
                 }
+                person 객체를 복사해서 person2에 저장한다.
                 let person2 = {...person}
+                여기서 궁금하다 싶은 내용은
+                person3 = person
+                과
+                person2 = {...person}
+                의 차이점인데, 복사하는 방법의 차이라고 볼 수 있다.
+                스프레드를 사용하지 않은 복사는 주소값만 복사하는 형식으로서
+                하나의 객체를 서로 다른 이름의 변수가 같이 참조하는 방식이라면,
+                스프레드를 사용한 복사는 내용을 그대로 가지고 새로운 객체를 생성하는
+                방식이라는 점에서 두 방법은 서로 다른 방법이라고 할 수 있다.
+                person == person2   :   false
+                person == person3   :   true
+
+                위의 person 객체를 복사해서 오면서, 새로운 내용을 추가 할 수도 있다.
+                person4 = {...person, address: "Ulsan"}
+                person 객체를 복사해서 가지고 오면서, 객체에 address 라는 새로운 값을 추가하였다.
+
+                위의 person 객체를 복사해오는데, 기존의 내용을 변경시킬 수도 있다.
+                person5 = {...person, name: "성진"}
+                person 객체를 복사해서 가지고 오면서, 객체에 name라는 키의 밸류값을 변경하였다.
+
+                객체를 대상으로 동작하는 스프레드는 배열을 대상으로도 동작한다.
+                let a = [1, 2]
+                let b = [...a, 3]
+                배열 a를 복사하여 거기에 3을 추가시켜서 배열 b를 생성하였다.
+
+                let c = [...a, ...b]
+                배열 a와 b의 내용을 전부 가져와서 c라는 배열을 생성하였다.
+
+            4. 삼항연산자
+                <!-- 조건 ? true : false -->
+                let person = {name: "SungJin", age: 20}
+                person이라는 객체가 있다고 하고,
+                if (person) {
+                    console.log(person.name)
+                } else {
+                    console.log("there is no person")
+                }
+                person이 존재한다면.. person 안에 있는 name을 콘솔에 출력하고,
+                person이 존재하지 않는다면 .. "there is no person"을 콘솔에 출력하는 코드입니다.
+                이 상태 그대로 실행이 된다면 결과는? 이름이 출력될 것이다.
+                let person = null
+                console.log(person ? person.name : "there is no person")
         </textarea>
         <script>
             // 많이 사용되어지는 첫번째
@@ -90,7 +133,9 @@
             //let [a, b, ...rest] = array;  // a, b 값 말고 나머기 값 가지고 오기
             //console.log(rest);
 
-            let person = {
+            // 많이 사용되어 지는 세번째
+            // Spread
+            /* let person = {
                 name: 'SungJin',
                 age: 20,
             };
@@ -101,6 +146,29 @@
             console.log(person3);
             console.log('스프레드를 사용한 복사', person == person2);
             console.log('대입연사자를 사용한 주소값 복사', person == person3);
+            let person4 = { ...person, address: 'Ulsan' };
+            console.log(person4);
+            let person5 = { ...person, name: '성진' }; // 객체를 복사해서 가지고 오는데, name 값을 바꾼 입력값
+            console.log(person5);
+            let a = [1, 2];
+            let b = [...a, 3];
+            console.log(b);
+            let c = [...a, ...b];
+            console.log(c); */
+            /* 
+                ... 을 쓰면서 복사를 하는게 키값을 쓰면 내용을 변경할 수 있다.
+                객체를 가지고 오는 문법
+            */
+            // 많이 사용되어 지는 네번째
+            // 삼항연산자
+            //let person = null;
+            let person = { name: 'SungJin', age: 20 };
+            if (person) {
+                console.log(person.name);
+            } else {
+                console.log('there is no person');
+            }
+            console.log(person ? person.name : 'there is no person');
         </script>
     </body>
 </html>
